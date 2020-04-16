@@ -3,28 +3,50 @@
     <Header />
     <v-content>
       <v-container>
-    <h1>trang post</h1>
-    <v-row>
-      <v-col md="4" cols="12">
-          <postId />
-      </v-col>
-      <v-col md="4" cols="12">
-          <postId />
-      </v-col>
-      <v-col md="4" cols="12">
-          <postId />
-      </v-col>
-    </v-row>
-  </v-container>
-    </v-content></div>
+        <h1>trang post</h1>
+        <EventCard
+          v-for="(event, index) in events"
+          :key="index"
+          :event="event"
+          :data-index="index"
+        />
+      </v-container>
+    </v-content>
+  </div>
 </template>
 <script>
-import postId from './_id/index'
+import { mapState } from "vuex";
+import EventCard from "@/components/EventCard.vue";
 import Header from "~/components/header.vue";
 export default {
-    components:{
-        postId,
-        Header
+  head() {
+    return {
+      title: "Post Archive",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "Post Archive Ai Design have a content post"
+        }
+      ]
+    };
+  },
+  async fetch({ store, error }) {
+    try {
+      await store.dispatch("events/fetchEvents");
+    } catch (e) {
+      error({
+        statusCode: 503,
+        message: "Unable to fetch events events at this time"
+      });
     }
-}
+  },
+  components: {
+    Header,
+    EventCard
+  },
+  computed: mapState({
+    events: state => state.events.events
+  })
+};
 </script>

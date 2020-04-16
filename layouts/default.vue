@@ -16,6 +16,16 @@ export default {
       title: "mr.3T"
     };
   },
+  head(){
+    return{
+      titleTemplate: "%s Ai-Design Design and development",
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Home Page Ai Design have a content post',
+      }]
+    }
+  },
   
 };
 </script>

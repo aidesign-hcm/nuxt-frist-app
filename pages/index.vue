@@ -39,10 +39,6 @@
                   </v-card>
                 </nuxt-link>
               </v-col>
-              <v-col md="4" cols="12">
-                <nuxt-link to="#">Test link</nuxt-link>
-              </v-col>
-
             </v-row>
           </v-container>
         </v-layout>
@@ -55,6 +51,12 @@
 import Header from "~/components/header.vue";
 
 export default {
+  head(){
+    return{
+      title: "Home Page",
+    }
+  },
+  
   components: {
     Header
   }

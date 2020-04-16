@@ -31,7 +31,7 @@ export default {
         },
         {
           label:'Post',
-          url:'/Post'
+          url:'/post'
         },
         {
           label:'Dashboard',

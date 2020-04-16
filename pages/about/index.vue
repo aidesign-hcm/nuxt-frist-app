@@ -20,6 +20,16 @@
 <script>
 import Header from "~/components/header.vue";
 export default {
+  head(){
+    return{
+      title: "About Page",
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'About Ai Design have a content post',
+      }]
+    }
+  },
   components:{
     Header
   }
